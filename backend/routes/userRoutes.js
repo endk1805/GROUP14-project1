@@ -1,9 +1,11 @@
-// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const ctrl = require('../controllers/userController');
 
-router.get('/', userController.getUsers);
-router.post('/', userController.addUser);
+// Thay đổi ở đây: '/users' -> '/'
+router.get('/', ctrl.getUsers); 
+
+// Và thay đổi ở đây: '/users' -> '/'
+router.post('/', ctrl.createUser);
 
 module.exports = router;
