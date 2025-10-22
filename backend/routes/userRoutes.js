@@ -8,4 +8,7 @@ router.get('/', ctrl.getUsers);
 // Và thay đổi ở đây: '/users' -> '/'
 router.post('/', ctrl.createUser);
 
+router.put('/:id', ctrl.updateUser);
+
+router.delete('/:id', ctrl.deleteUser);
 module.exports = router;
