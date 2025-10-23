@@ -4,9 +4,15 @@
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   animation: fadeInRight 0.8s ease;
+<<<<<<< HEAD
   max-height: 650px;
   overflow-y: auto;
   min-height: 400px;
+=======
+  max-height: 80vh;
+  overflow-y: auto;
+  flex: 1;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 @keyframes fadeInRight {
@@ -139,23 +145,59 @@
 }
 
 .btn-edit {
+<<<<<<< HEAD
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+=======
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #00f2fe, #4facfe);
+  background-size: 300% 100%;
+  color: white;
+  animation: gradientShift 8s ease infinite;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 .btn-edit:hover {
   transform: translateY(-2px);
+<<<<<<< HEAD
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .btn-delete {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   color: white;
+=======
+  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+  animation: gradientShift 2s ease infinite;
+}
+
+.btn-delete {
+  background: linear-gradient(270deg, #48c6ef, #6f86d6, #6f86d6, #48c6ef);
+  background-size: 300% 100%;
+  color: white;
+  animation: gradientShift 8s ease infinite;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 .btn-delete:hover {
   transform: translateY(-2px);
+<<<<<<< HEAD
   box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+=======
+  box-shadow: 0 4px 12px rgba(72, 198, 239, 0.4);
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 /* Chế độ chỉnh sửa */
@@ -210,23 +252,47 @@
 }
 
 .btn-save {
+<<<<<<< HEAD
   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
   color: white;
+=======
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #00f2fe, #4facfe);
+  background-size: 300% 100%;
+  color: white;
+  animation: gradientShift 8s ease infinite;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 .btn-save:hover {
   transform: scale(1.1);
+<<<<<<< HEAD
   box-shadow: 0 4px 12px rgba(56, 239, 125, 0.4);
 }
 
 .btn-cancel {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   color: white;
+=======
+  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+  animation: gradientShift 2s ease infinite;
+}
+
+.btn-cancel {
+  background: linear-gradient(270deg, #48c6ef, #6f86d6, #6f86d6, #48c6ef);
+  background-size: 300% 100%;
+  color: white;
+  animation: gradientShift 8s ease infinite;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 .btn-cancel:hover {
   transform: scale(1.1);
+<<<<<<< HEAD
   box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+=======
+  box-shadow: 0 4px 12px rgba(72, 198, 239, 0.4);
+  animation: gradientShift 2s ease infinite;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
 
 /* Responsive cho mobile */
