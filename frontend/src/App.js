@@ -7,11 +7,7 @@ import './App.css';
 
 // Định nghĩa URL của backend để dễ dàng thay đổi khi cần.
 // Nếu muốn override, đặt REACT_APP_API_URL (ví dụ: http://api.example.com/api)
-<<<<<<< HEAD
-// code frontend (nhánh hiện tại: frontend)
-=======
 /* code backend (nhánh được merge: backend) */
->>>>>>> backend
 
 function App() {
     // Tạo biến trạng thái 'users' để lưu trữ danh sách người dùng
@@ -57,17 +53,6 @@ function App() {
             // Gửi dữ liệu người dùng mới lên server bằng phương thức POST
             const response = await axios.post(`${API_URL}/users`, newUser);
 
-<<<<<<< HEAD
-            // response.data là user vừa tạo. Chuẩn hoá để có `id`.
-            const created = { ...response.data, id: response.data._id };
-
-            // Cập nhật danh sách người dùng trên giao diện mà không cần tải lại trang
-            setUsers(prev => [created, ...prev]); // thêm lên đầu
-            showToast('✨ Thêm người dùng thành công!', 'success');
-        } catch (error) {
-            console.error("Lỗi khi thêm người dùng:", error);
-            showToast('❌ Không thể thêm người dùng. Vui lòng thử lại!', 'error');
-=======
             if (response.data.success) {
                 // response.data.data là user vừa tạo. Chuẩn hoá để có `id`.
                 const created = { ...response.data.data, id: response.data.data._id };
@@ -82,7 +67,6 @@ function App() {
             console.error("Lỗi khi thêm người dùng:", error);
             const errorMessage = error.response?.data?.message || 'Không thể thêm người dùng. Vui lòng thử lại!';
             showToast(`❌ ${errorMessage}`, 'error');
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
         }
     };
 
@@ -116,36 +100,6 @@ function App() {
     return (
         <div className="App">
             <h1>🎯 Quản Lý Người Dùng</h1>
-<<<<<<< HEAD
-            <div className="app-toolbar">
-                <div className="search-wrap">
-                    <input
-                        aria-label="Tìm kiếm người dùng"
-                        className="search-input"
-                        placeholder="Tìm theo tên hoặc email..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </div>
-                {loading && (
-                    <div className="spinner" aria-hidden="true"></div>
-                )}
-            </div>
-
-            <div className="app-container">
-                {/* Truyền hàm handleUserAdded xuống cho AddUser */}
-                <AddUser onUserAdded={handleUserAdded} />
-                {/* Truyền danh sách users và các hàm xử lý xuống cho UserList */}
-                <UserList 
-                    users={users.filter(u => {
-                        if (!query.trim()) return true;
-                        const q = query.toLowerCase();
-                        return u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q);
-                    })} 
-                    onDeleteUser={handleDeleteUser}
-                    onUpdateUser={handleUpdateUser}
-                />
-=======
             <div className="app-content">
                 <div className="app-toolbar">
                     <div className="search-wrap">
@@ -176,7 +130,6 @@ function App() {
                         onUpdateUser={handleUpdateUser}
                     />
                 </div>
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
             </div>
             
             {/* Toast notification */}
