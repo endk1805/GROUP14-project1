@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+/* 🌿 App tổng thể */
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+=======
 body {
   margin: 0;
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
   min-height: 100vh;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -41,6 +48,116 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+<<<<<<< HEAD
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 🌱 Logo xoay mềm mại */
+.App-logo {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.App-logo:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: spin 8s linear infinite;
+  }
+}
+
+/* 🌿 Header đẹp */
+.App-header {
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 40px 60px;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  animation: slideUp 0.8s ease-out;
+}
+
+/* 🌼 Tiêu đề và nội dung */
+.App-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.App-header p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #e9ffe5;
+}
+
+/* 🌿 Nút liên kết */
+.App-link {
+  display: inline-block;
+  margin-top: 25px;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
+  box-shadow: 0 5px 20px rgba(86, 171, 47, 0.4);
+  transition: all 0.3s ease;
+}
+
+.App-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(86, 171, 47, 0.5);
+}
+
+.App-link:active {
+  transform: translateY(-1px);
+}
+/* Tạo khoảng cách giữa 2 form */
+.add-user-container {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInLeft 0.8s ease;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  margin-bottom: 40px; /* 👈 thêm dòng này */
+}
+
+/* Nếu form thứ hai có class riêng, ví dụ user-list-container */
+.user-list-container {
+  margin-top: 40px; /* 👈 thêm khoảng trống ở đầu form kế tiếp */
+}
+
+/* 🌈 Animation mượt */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+=======
   margin-bottom: 20px;
   padding: 15px;
   background: rgba(255, 255, 255, 0.1);
@@ -114,4 +231,12 @@ body {
   .app-container {
     grid-template-columns: 1fr;
   }
+<<<<<<< HEAD
+  
+  .search-wrap {
+    max-width: 100%;
+  }
+>>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
+=======
+>>>>>>> origin/backend
 }

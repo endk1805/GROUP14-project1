@@ -7,7 +7,7 @@ import './App.css';
 
 // Định nghĩa URL của backend để dễ dàng thay đổi khi cần.
 // Nếu muốn override, đặt REACT_APP_API_URL (ví dụ: http://api.example.com/api)
-const API_URL = (process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL.replace(/\/$/, '')) || 'http://localhost:3002/api';
+/* code backend (nhánh được merge: backend) */
 
 function App() {
     // Tạo biến trạng thái 'users' để lưu trữ danh sách người dùng
