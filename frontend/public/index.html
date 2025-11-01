@@ -2,42 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
+    <!-- 🌐 Favicon & Ứng dụng -->
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- 📱 Responsive & Hiển thị -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 🎨 Màu giao diện trình duyệt -->
     <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="msapplication-navbutton-color" content="#000000" />
+
+    <!-- 🧠 Thông tin mô tả SEO -->
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Ứng dụng React giúp quản lý dữ liệu người dùng hiện đại, nhanh và thân thiện."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="author" content="GROUP14 Project Team" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- 🧭 Thẻ Open Graph (Facebook, Zalo, LinkedIn) -->
+    <meta property="og:title" content="GROUP14 React App" />
+    <meta
+      property="og:description"
+      content="Ứng dụng React đẹp mắt và tối ưu, được phát triển bởi nhóm 14."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-app-domain.com" />
+
+    <!-- 🐦 Thẻ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GROUP14 React App" />
+    <meta
+      name="twitter:description"
+      content="Ứng dụng React mạnh mẽ và thân thiện với người dùng."
+    />
+    <meta name="twitter:image" content="%PUBLIC_URL%/logo192.png" />
+
+    <title>GROUP14 React App</title>
+
+    <!-- 💡 Ghi chú: Các cảnh báo tương thích meta là bình thường, có thể bỏ qua -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+      File này là template chính của ứng dụng React.
+      Sau khi build, các script của React sẽ được chèn vào cuối body.
     -->
   </body>
 </html>

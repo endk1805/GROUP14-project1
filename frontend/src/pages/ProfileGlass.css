@@ -1,0 +1,206 @@
+/* --- File: frontend/src/pages/ProfilePage.css (Cleaned & Integrated) --- */
+
+/* Wrapper */
+.profile-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: 80vh;
+}
+
+/* Dark Glass Container */
+.profile-container.profile-container-dark-glass {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    color: #ECEFF4; /* Default light text */
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.profile-header .profile-main-title {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.profile-header .profile-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Info Display Section */
+.profile-info-textboxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.profile-info-textboxes .profile-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.profile-info-textboxes .info-input {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ECEFF4;
+    font-weight: 500;
+    cursor: default;
+    box-shadow: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+}
+.profile-info-textboxes .info-input[readOnly] {
+    background-color: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+}
+.profile-info-textboxes .id-input {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Edit Section Title */
+.inner-card-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 30px; /* Increased space */
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Avatar Section */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px; /* Increased space */
+}
+.avatar-section .avatar-upload-label { color: rgba(255,255,255,0.8); cursor: pointer; font-weight: 500; font-size: 0.9rem; margin-bottom: 5px; display: inline-block; }
+.avatar-section .avatar-upload-label:hover { text-decoration: underline; }
+.avatar-section .avatar-file-name { color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 5px; text-align: center; display: block;}
+.avatar-section .avatar-upload-input { display: none; }
+.avatar-section .avatar-upload-button { margin-top: 10px; padding: 6px 15px; font-size: 0.8rem; background-color: #A3BE8C; color: #2E3440; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; }
+.avatar-section .avatar-upload-button:hover { background-color: #8a9e76; }
+
+/* Main Form Grid */
+.profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 30px; /* Increased row gap */
+    margin-bottom: 40px; /* Increased space */
+}
+.profile-form-group { margin-bottom: 0; }
+.profile-form-group.full-width { grid-column: 1 / -1; }
+
+.profile-form-group label {
+    display: flex; align-items: center;
+    margin-bottom: 10px; /* Increased space */
+    font-weight: 500;
+    color: #E5E9F0;
+    font-size: 0.9rem;
+}
+.profile-form-group label span.icon { margin-right: 8px; color: #bdc8d9; font-size: 1.1em; }
+
+/* Bigger Textboxes */
+.profile-form-grid input[type="text"],
+.profile-form-grid input[type="email"],
+.profile-form-grid input[type="tel"],
+.profile-form-grid input[type="password"],
+.profile-form-grid textarea {
+    width: 100%;
+    padding: 14px 15px; /* Increased padding */
+    font-size: 1rem; /* Increased font size */
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ECEFF4;
+}
+.profile-form-grid input::placeholder,
+.profile-form-grid textarea::placeholder { color: rgba(236, 239, 244, 0.6); }
+.profile-form-grid textarea { min-height: 100px; resize: vertical; }
+
+.profile-form-grid input:focus,
+.profile-form-grid textarea:focus {
+     outline: none;
+     background-color: rgba(255, 255, 255, 0.15);
+     border-color: rgba(255, 255, 255, 0.5);
+     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+.profile-form-grid input:disabled,
+.profile-form-grid textarea:disabled { background-color: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.4); cursor: not-allowed; }
+.input-hint { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 5px;}
+
+/* Password Section */
+.password-section {
+    margin-bottom: 40px; /* Increased space */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 25px;
+}
+.password-toggle-btn { background-color: rgba(235, 203, 139, 0.2); color: #EBCB8B; border: 1px solid rgba(235, 203, 139, 0.4); display: inline-block; padding: 8px 18px; font-size: 0.9rem; font-weight: 500; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; margin-bottom: 20px; }
+.password-toggle-btn:hover { background-color: rgba(235, 203, 139, 0.3); }
+
+.password-change-form { background: rgba(0, 0, 0, 0.15); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 20px; animation: fadeIn 0.4s ease-out; }
+.password-change-form h3 { display: none; }
+.password-change-form .profile-form-group label { color: #E5E9F0; margin-bottom: 10px; }
+.password-change-form .form-input { padding: 14px 15px; font-size: 1rem; border-radius: 8px; background-color: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: #ECEFF4; }
+.password-change-form .form-input:focus { background-color: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.4); box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08); }
+.password-change-form .password-form-actions { display: flex; gap: 10px; margin-top: 1rem; justify-content: flex-end; }
+.password-change-form .save-password { background-color: #A3BE8C; color: #2E3440; padding: 10px 20px; border-radius: 6px; font-weight: 500;}
+.password-change-form .cancel-password { background-color: rgba(255, 255, 255, 0.1); color: #ECEFF4; border: 1px solid rgba(255, 255, 255, 0.2); padding: 10px 20px; border-radius: 6px; font-weight: 500;}
+.password-change-form .profile-message { text-align: left; margin-top: 10px; font-size: 0.85rem;}
+
+/* Main Action Buttons */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px; /* Consistent spacing */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 25px; /* Add padding */
+}
+.profile-btn { padding: 12px 25px; font-size: 0.95rem; font-weight: 500; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+.profile-btn.cancel { background-color: rgba(255, 255, 255, 0.1); color: #ECEFF4; border: 1px solid rgba(255, 255, 255, 0.2); }
+.profile-btn.cancel:hover { background-color: rgba(255, 255, 255, 0.15); }
+.profile-btn.save { background-color: #696cff; color: white; box-shadow: 0 2px 4px rgba(105, 108, 255, 0.3); }
+.profile-btn.save:hover { background-color: #5f61e6; }
+
+/* General message styling */
+ .profile-message { text-align: center; margin-top: 15px; font-weight: 500; font-size: 0.9rem; }
+ .profile-message.success { color: #A3BE8C; }
+ .profile-message.error { color: #ff8a8a; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-form-grid { grid-template-columns: 1fr; gap: 20px 0; }
+    .profile-container { padding: 25px; }
+    .profile-actions { justify-content: center; }
+}
