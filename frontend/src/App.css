@@ -1,18 +1,48 @@
-<<<<<<< HEAD
-/* 🌿 App tổng thể */
-.App {
-  text-align: center;
-  background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-=======
-body {
-  margin: 0;
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* --- File: frontend/src/App.css (Đã sửa) --- */
+
+/* 🌟 Thêm CSS cho thanh Menu (Header) 🌟 */
+.app-header {
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.app-nav {
+  display: flex;
+  /* === CHANGE: Center main links === */
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  gap: 25px; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Keep padding */
+  box-sizing: border-box;
+  position: relative; /* Needed for absolute positioning of user info */
+}
+
+.app-nav a {
+  color: #ECEFF4; /* Chữ trắng */
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.app-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === ADD: Style for the ACTIVE link === */
+.app-nav a.active {
+  color: #ffffff; /* Make active link brighter white */
+  font-weight: 600; /* Make it bolder */
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly darker background */
+  border-bottom: 2px solid #88C0D0; /* Add a light blue underline */
+}
+
+/* 🌟 CSS chung cho nội dung trang 🌟 */
 .App {
   padding: 20px;
   max-width: 1200px;
@@ -22,7 +52,7 @@ body {
 
 .app-title {
   text-align: center;
-  color: #ffffff;     
+  color: #ffffff;
   margin-bottom: 30px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -37,6 +67,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* 🌟 CSS Layout 2 cột cho trang Admin 🌟 */
 .app-container {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -46,86 +77,14 @@ body {
 
 .app-toolbar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* Sửa: Căn giữa thanh tìm kiếm */
   align-items: center;
-<<<<<<< HEAD
-  justify-content: center;
+  margin-bottom: 20px;
   font-family: 'Poppins', sans-serif;
   animation: fadeIn 1s ease-in-out;
 }
 
-/* 🌱 Logo xoay mềm mại */
-.App-logo {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  transition: transform 0.3s ease;
-}
-
-.App-logo:hover {
-  transform: scale(1.1) rotate(10deg);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: spin 8s linear infinite;
-  }
-}
-
-/* 🌿 Header đẹp */
-.App-header {
-  color: #fff;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 40px 60px;
-  border-radius: 25px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
-  animation: slideUp 0.8s ease-out;
-}
-
-/* 🌼 Tiêu đề và nội dung */
-.App-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.App-header p {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #e9ffe5;
-}
-
-/* 🌿 Nút liên kết */
-.App-link {
-  display: inline-block;
-  margin-top: 25px;
-  text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 1rem;
-  color: white;
-  background: linear-gradient(135deg, #56ab2f, #a8e063);
-  box-shadow: 0 5px 20px rgba(86, 171, 47, 0.4);
-  transition: all 0.3s ease;
-}
-
-.App-link:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(86, 171, 47, 0.5);
-}
-
-.App-link:active {
-  transform: translateY(-1px);
-}
-/* Tạo khoảng cách giữa 2 form */
+/* 🌸 Cột bên TRÁI (Thêm User) */
 .add-user-container {
   background: #ffffff;
   padding: 32px;
@@ -133,16 +92,33 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   animation: fadeInLeft 0.8s ease;
   height: fit-content;
-  position: sticky;
-  top: 20px;
-  margin-bottom: 40px; /* 👈 thêm dòng này */
+  
+  /* === SỬA LỖI ĐÈ NHAU: Xóa 2 dòng này === */
+  /* position: sticky; */
+  /* top: 20px; */ 
 }
 
-/* Nếu form thứ hai có class riêng, ví dụ user-list-container */
+/* 🌸 Cột bên PHẢI (Danh sách User) */
 .user-list-container {
-  margin-top: 40px; /* 👈 thêm khoảng trống ở đầu form kế tiếp */
+  /* === SỬA LỖI KHÔNG NHẤT QUÁN === */
+  /* (Dùng style giống hệt cột trái) */
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInRight 0.8s ease;
 }
-
+.user-info-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Position it absolutely to the right */
+  position: absolute; 
+  right: 20px; /* Distance from the right edge */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Fine-tune vertical centering */
+  /* margin-left: auto; */ /* REMOVE margin-left */
+}
 /* 🌈 Animation mượt */
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -157,19 +133,22 @@ body {
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
-=======
-  margin-bottom: 20px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 🔍 Ô tìm kiếm */
 .search-wrap {
-  flex: 0 1 350px;
-  margin-right: 20px;
+  flex: 1; /* Cho nó giãn ra */
+  max-width: 600px; /* Giới hạn độ rộng */
   position: relative;
 }
 
@@ -184,6 +163,7 @@ body {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+  box-sizing: border-box; /* Thêm để padding không vỡ layout */
 }
 
 .search-input::placeholder {
@@ -201,6 +181,38 @@ body {
   animation: borderRotate 4s linear infinite;
 }
 
+.header-avatar {
+  width: 28px; /* Smaller size */
+  height: 28px; /* Smaller size */
+  border-radius: 50%; /* Ensure it's circular */
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Style for placeholder when no avatar */
+.header-avatar-placeholder {
+  width: 28px; /* Smaller size */
+  height: 28px; /* Smaller size */
+  border-radius: 50%; /* Ensure it's circular */
+  background-color: #5E81AC; /* Blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem; /* Smaller font for smaller circle */
+}
+
+/* Adjust spacing if needed */
+.user-info-display {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Slightly reduce gap */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 @keyframes borderRotate {
   0% {
     background-image: linear-gradient(white, white),
@@ -212,6 +224,7 @@ body {
   }
 }
 
+/* ⏳ Loading spinner */
 .spinner {
   width: 24px;
   height: 24px;
@@ -222,21 +235,18 @@ body {
   margin-left: 15px;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+/* 📱 Responsive */
 @media (max-width: 900px) {
   .app-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 cột trên điện thoại */
   }
-<<<<<<< HEAD
   
+  .add-user-container {
+    position: static; /* Hủy sticky trên điện thoại */
+  }
+
   .search-wrap {
     max-width: 100%;
   }
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
-=======
->>>>>>> origin/backend
 }
+

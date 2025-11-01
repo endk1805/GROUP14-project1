@@ -10,12 +10,12 @@
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
-<<<<<<< HEAD
- 
-=======
+
+  /* ✅ Thêm hai dòng này để hỗ trợ Safari */
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
 }
+
 
 @keyframes fadeIn {
   from {

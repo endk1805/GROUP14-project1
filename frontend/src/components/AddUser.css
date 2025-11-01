@@ -1,3 +1,4 @@
+
 .add-user-container {
   background: #ffffff;
   padding: 32px;
@@ -84,12 +85,9 @@
 
 .submit-btn {
   padding: 15px 32px;
-<<<<<<< HEAD
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-=======
   background: linear-gradient(270deg, #4facfe, #00f2fe, #00f2fe, #4facfe);
   background-size: 300% 100%;
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 12px;
@@ -98,32 +96,24 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 12px;
-<<<<<<< HEAD
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  width: 100%;
-=======
   box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
   width: 100%;
   animation: gradientShift 8s ease infinite;
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  width: 100%;
 }
 
 .submit-btn:hover {
   transform: translateY(-3px);
-<<<<<<< HEAD
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-=======
   box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
   animation: gradientShift 2s ease infinite;
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
 .submit-btn:active {
   transform: translateY(-1px);
 }
 
-<<<<<<< HEAD
-=======
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -136,7 +126,7 @@
   }
 }
 
->>>>>>> c8aa9b207bb8b7d7b5307b9d0cc0273d9bdf4bb3
+
 /* Icon cho input fields */
 .form-group {
   position: relative;
@@ -166,3 +156,36 @@
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-user-container {
+    padding: 24px;
+  }
+  .add-user-container h2 {
+    font-size: 1.5rem;
+  }
+  .submit-btn {
+    font-size: 1rem;
+    padding: 12px 24px;
+  } 
+}
+@media (max-width: 480px) {
+  .add-user-container {
+    padding: 20px;
+  }
+  .add-user-container h2 {
+    font-size: 1.3rem;
+  }
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  } 
+}
+
+
+
+
+
+
+      
