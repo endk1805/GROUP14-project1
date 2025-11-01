@@ -1,140 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import UserList from './components/UserList';
-import AddUser from './components/AddUser';
-import Toast from './components/Toast';
-import './App.css';
+// --- File: frontend/src/App.js (Đã tích hợp) ---
+import React from 'react';
+// === THAY ĐỔI IMPORT: Thêm NavLink và alias nó thành Link ===
+import { BrowserRouter, Routes, Route, NavLink as Link } from 'react-router-dom';
+import './App.css'; // Load CSS chính
+import { AuthProvider, AuthContext } from './context/AuthContext'; // <-- IMPORT AuthContext
+import { useContext } from 'react'; // <-- IMPORT useContext
 
-// Định nghĩa URL của backend để dễ dàng thay đổi khi cần.
-// Nếu muốn override, đặt REACT_APP_API_URL (ví dụ: http://api.example.com/api)
-const API_URL = (process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL.replace(/\/$/, '')) || 'http://localhost:8080/api';
+// Import các trang
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import AdminDashboard from './pages/AdminDashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
-function App() {
-    // Tạo biến trạng thái 'users' để lưu trữ danh sách người dùng
-    const [users, setUsers] = useState([]);
-    // Search và loading state
-    const [query, setQuery] = useState('');
-    const [loading, setLoading] = useState(false);
-    
-    // State cho toast notification
-    const [toast, setToast] = useState(null);
-
-    // Hàm hiển thị toast
-    const showToast = (message, type = 'success') => {
-        setToast({ message, type });
-    };
-
-    // useEffect là một "hook" đặc biệt của React.
-    // Code bên trong nó sẽ được chạy sau khi component được render lần đầu tiên.
-    // Dấu ngoặc vuông [] ở cuối có nghĩa là "chỉ chạy đúng 1 lần duy nhất".
-    useEffect(() => {
-        // Định nghĩa một hàm để gọi API và lấy danh sách người dùng
-        const fetchUsers = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get(`${API_URL}/users`);
-                // Chuẩn hoá mỗi user để có trường `id` (UserList, AddUser dùng `id`)
-                const normalized = response.data.map(u => ({ ...u, id: u._id }));
-                setUsers(normalized); // Cập nhật danh sách users với dữ liệu từ server
-            } catch (error) {
-                console.error("Lỗi khi tải danh sách người dùng:", error);
-            }
-            finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUsers(); // Gọi hàm đó
-    }, []);
-
-    // Hàm này sẽ được truyền xuống cho component AddUser
-    const handleUserAdded = async (newUser) => {
-        try {
-            // Gửi dữ liệu người dùng mới lên server bằng phương thức POST
-            const response = await axios.post(`${API_URL}/users`, newUser);
-
-            // response.data là user vừa tạo. Chuẩn hoá để có `id`.
-            const created = { ...response.data, id: response.data._id };
-
-            // Cập nhật danh sách người dùng trên giao diện mà không cần tải lại trang
-            setUsers(prev => [created, ...prev]); // thêm lên đầu
-            showToast('✨ Thêm người dùng thành công!', 'success');
-        } catch (error) {
-            console.error("Lỗi khi thêm người dùng:", error);
-            showToast('❌ Không thể thêm người dùng. Vui lòng thử lại!', 'error');
-        }
-    };
-
-    // Hàm xóa người dùng
-    const handleDeleteUser = async (userId) => {
-        try {
-            await axios.delete(`${API_URL}/users/${userId}`);
-            // Cập nhật danh sách bằng cách loại bỏ user đã xóa
-            setUsers(prev => prev.filter(user => user.id !== userId));
-            showToast('🗑️ Đã xóa người dùng thành công!', 'success');
-        } catch (error) {
-            console.error("Lỗi khi xóa người dùng:", error);
-            showToast('❌ Không thể xóa người dùng. Vui lòng thử lại!', 'error');
-        }
-    };
-
-    // Hàm cập nhật người dùng
-    const handleUpdateUser = async (userId, updatedUser) => {
-        try {
-            const response = await axios.put(`${API_URL}/users/${userId}`, updatedUser);
-            // Cập nhật danh sách với thông tin mới
-            const updated = { ...response.data, id: response.data._id };
-            setUsers(prev => prev.map(user => user.id === userId ? updated : user));
-            showToast('✏️ Cập nhật người dùng thành công!', 'success');
-        } catch (error) {
-            console.error("Lỗi khi cập nhật người dùng:", error);
-            showToast('❌ Không thể cập nhật người dùng. Vui lòng thử lại!', 'error');
-        }
-    };
+// === TẠO COMPONENT HEADER MỚI ===
+const AppHeader = () => {
+    // Lấy thông tin user và hàm logout từ Context
+    const { user, logout } = useContext(AuthContext);
 
     return (
-        <div className="App">
-            <h1>🎯 Quản Lý Người Dùng</h1>
-            <div className="app-toolbar">
-                <div className="search-wrap">
-                    <input
-                        aria-label="Tìm kiếm người dùng"
-                        className="search-input"
-                        placeholder="Tìm theo tên hoặc email..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </div>
-                {loading && (
-                    <div className="spinner" aria-hidden="true"></div>
-                )}
-            </div>
+        <header className="app-header"> {/* Dùng class từ App.css */}
+            <nav className="app-nav"> {/* Dùng class từ App.css */}
+                {!user ? ( // Nếu chưa đăng nhập
+                    <>
+                        <Link to="/login">Đăng nhập</Link>
+                        <Link to="/signup">Đăng ký</Link>
+                    </>
+                ) : ( // Nếu đã đăng nhập
+                    <>
+                        {/* Các link chính */}
+                        <Link to="/">Trang chủ</Link> {/* Ví dụ thêm link trang chủ */}
+                        <Link to="/profile">Trang cá nhân</Link>
+                        {user.role === 'Admin' && ( // Chỉ hiện nếu là Admin
+                           <Link to="/admin">Quản lý User</Link>
+                        )}
 
-            <div className="app-container">
-                {/* Truyền hàm handleUserAdded xuống cho AddUser */}
-                <AddUser onUserAdded={handleUserAdded} />
-                {/* Truyền danh sách users và các hàm xử lý xuống cho UserList */}
-                <UserList 
-                    users={users.filter(u => {
-                        if (!query.trim()) return true;
-                        const q = query.toLowerCase();
-                        return u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q);
-                    })} 
-                    onDeleteUser={handleDeleteUser}
-                    onUpdateUser={handleUpdateUser}
-                />
-            </div>
-            
-            {/* Toast notification */}
-            {toast && (
-                <Toast
-                    message={toast.message}
-                    type={toast.type}
-                    onClose={() => setToast(null)}
-                />
-            )}
-        </div>
+                        {/* Phần hiển thị thông tin user bên phải */}
+                        <div className="user-info-display">
+                            {user.avatar ? (
+                                <img src={user.avatar} alt="Avatar" className="header-avatar"/>
+                            ) : (
+                                // Hiển thị chữ cái đầu nếu không có avatar
+                                <div className="header-avatar-placeholder">
+                                    {user.name?.charAt(0)?.toUpperCase()}
+                                </div>
+                            )}
+                            <span className="header-username">{user.name}</span>
+                            {/* Nút đăng xuất gọi hàm logout từ context */}
+                            <button onClick={logout} className="logout-button">Đăng xuất</button>
+                        </div>
+                    </>
+                )}
+            </nav>
+        </header>
     );
+};
+// =============================
+
+
+function App() {
+  return (
+    // === BỌC TOÀN BỘ APP BẰNG AuthProvider ===
+    <AuthProvider>
+        <BrowserRouter>
+            {/* Gọi component Header mới */}
+            <AppHeader />
+
+            {/* Phần nội dung chính của trang */}
+            <main className="app-main-content"> {/* Thêm class để CSS nếu cần */}
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password/:token" element={<ResetPassword />} />
+                    {/* Route cho trang chủ */}
+                    <Route path="/" element={
+                        <div style={{ padding: '20px', textAlign: 'center', color: '#fff' }}>
+                            <h2>Chào mừng đến với ứng dụng!</h2>
+                        </div>
+                    } />
+                </Routes>
+            </main>
+        </BrowserRouter>
+    </AuthProvider>
+    // ===================================
+  );
 }
 
 export default App;

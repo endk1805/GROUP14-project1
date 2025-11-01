@@ -1,0 +1,131 @@
+/* --- File: frontend/src/pages/AdminDashboard.css (Dark Glass Style) --- */
+
+/* Wrapper to center the card */
+.admin-dashboard-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align card to top */
+    padding: 40px 20px;
+    min-height: 80vh;
+}
+
+/* === APPLY DARK GLASS EFFECT === */
+.admin-dashboard-container {
+    /* Darker, more blurred background */
+    background: rgba(0, 0, 0, 0.2); /* Dark semi-transparent */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Faint border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Softer, darker shadow */
+
+    /* Layout */
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 900px; /* Adjust width for table */
+    box-sizing: border-box;
+    color: #ECEFF4; /* Light text inside */
+    animation: fadeIn 0.5s ease-out;
+}
+/* ============================= */
+
+/* Fade-in Animation (if needed) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title Styling */
+.admin-dashboard-container h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #ffffff; /* White title */
+    font-weight: 600;
+    font-size: 1.6rem;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+}
+
+/* Loading and Error Message Styling */
+.admin-loading {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8); /* Lighter loading text */
+}
+.admin-error-message {
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #ff8a8a; /* Lighter red */
+    background-color: rgba(255, 62, 29, 0.15); /* Transparent red background */
+    border: 1px solid rgba(255, 138, 138, 0.3); /* Transparent red border */
+    border-radius: 6px;
+}
+
+/* === DARK THEME TABLE === */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    /* Use lighter borders */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+}
+
+.admin-table th {
+    /* Transparent header, light text */
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Alternating row background (optional, subtle) */
+/* .admin-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+} */
+
+.admin-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.07); /* Slightly lighter on hover */
+}
+
+/* No users row */
+.admin-table .no-users-row td {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    font-style: italic;
+}
+/* ======================= */
+
+
+/* Delete Button Styling (Keep it red for warning) */
+.delete-btn {
+    background-color: rgba(255, 62, 29, 0.7); /* Red with transparency */
+    color: white;
+    border: 1px solid rgba(255, 138, 138, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 62, 29, 0.9); /* More opaque red */
+    border-color: rgba(255, 138, 138, 0.5);
+    box-shadow: 0 2px 8px rgba(255, 62, 29, 0.3);
+}
