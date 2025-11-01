@@ -1,4 +1,5 @@
-// routes/userRoutes.js
+// --- File: backend/routes/userRoutes.js (Corrected) ---
+
 const express = require('express');
 const router = express.Router();
 
