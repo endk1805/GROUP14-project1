@@ -1,23 +1,393 @@
-/* --- File: frontend/src/index.css (Code mới) --- */
+:root {
+  /* Theme Colors */
+  --primary-color: #2C5530;
+  --primary-dark: #1a2e1c;
+  --primary-light: #4a7751;
+  --primary-hover-color: #1e3d21;
+  --accent-color: #90b797;
+  
+  /* Background Colors */
+  --bg-main: var(--primary-dark);
+  --bg-card: rgba(44, 85, 48, 0.9);
+  --bg-overlay: rgba(26, 46, 28, 0.8);
+  --background-color: var(--primary-dark);
+  
+  /* Text Colors */
+  --text-main: #ffffff;
+  --text-color: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  
+  /* Form Colors */
+  --input-background: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --border-light: rgba(255, 255, 255, 0.1);
+  
+  /* Shadows */
+  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 0;
+  
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
 
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  
-  /* ĐÂY LÀ NỀN GRADIENT BẠN MUỐN */
-  background: linear-gradient(135deg, #000000 50%, #2a5298 100%);
-  
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  
-  /* Chữ mặc định màu sáng để dễ đọc trên nền xanh */
-  color: #ECEFF4; 
+  /* Transitions */
+  --transition-all: all 0.3s ease;
+  --webkit-transition: all 0.3s ease;
+  --moz-transition: all 0.3s ease;
+  --o-transition: all 0.3s ease;
 }
 
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-color) 100%
+  );
+  opacity: 0.8;
+  overflow: hidden;
+}
+
+/* Uncomment and update the path once you have the image
+.bg-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/tropical-leaves.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  z-index: -1;
+} */
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-overlay),
+    rgba(26, 46, 28, 0.95)
+  );
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-4);
+  z-index: 2;
+}
+
+/* Card Styles */
+.container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding: var(--space-4);
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+  color: var(--text-main);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--border-light);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-effect {
+  background: linear-gradient(
+    to bottom right,
+    rgba(44, 85, 48, 0.2),
+    rgba(44, 85, 48, 0.1)
+  );
+  -webkit-backdrop-filter: blur(8px);
+  -moz-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-8);
+  position: relative;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: var(--spacing-4);
+  line-height: 1.2;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--spacing-4);
+    min-height: 60vh;
+  }
+
+  .nav {
+    padding: var(--spacing-3);
+  }
+
+  .card {
+    padding: var(--spacing-3);
+  }
+
+  .container {
+    padding: var(--spacing-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 60vh;
+  }
+
+  .nav__title {
+    font-size: 0.8rem;
+  }
+
+  button, .button {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: 0.8rem;
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: var(--spacing-4);
+  color: var(--primary-color);
+  text-shadow: 0 2px 4px rgba(114, 137, 217, 0.1);
+}
+
+p {
+  margin-bottom: var(--spacing-4);
+  line-height: 1.6;
+}
+
+/* Links */
 a {
+  color: var(--primary-color);
   text-decoration: none;
+  transition: var(--transition-all);
+  position: relative;
+}
 
+a:hover {
+  color: var(--primary-hover-color);
+}
 
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: var(--transition-all);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Buttons */
+button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-all);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+button::before, .button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+button:hover::before, .button:hover::before {
+  transform: translateX(100%);
+}
+
+button:hover, .button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3);
+  background-color: var(--bg-overlay);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.nav__menu {
+  position: absolute;
+  top: var(--spacing-4);
+  left: var(--spacing-6);
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav__title {
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Form elements */
+input, textarea, select {
+  width: 100%;
+  padding: var(--spacing-3);
+  background-color: var(--input-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Search bar specific styles */
+.search-bar {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  padding-left: var(--spacing-8);
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%237289d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
+  background-repeat: no-repeat;
+  background-position: var(--spacing-3) center;
+  background-size: 20px;
+}
+
+/* Code blocks */
+code {
+  font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: var(--input-background);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
 }

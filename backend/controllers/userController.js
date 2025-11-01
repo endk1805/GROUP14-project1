@@ -1,55 +1,49 @@
-// backend/controllers/userController.js
-const User = require('../models/User');
+// controllers/userController.js
+let users = [
+    { id: 1, name: "Kiet", email: "kiet@example.com" },
+    { id: 2, name: "Phuc", email: "phuc@example.com" }
+];
+let nextId = 3; 
 
-// GET /api/users
-exports.getUsers = async (req, res) => {
-  try {
-    const users = await User.find().sort({ createdAt: -1 });
+exports.getUsers = (req, res) => {
     res.status(200).json(users);
-  } catch (e) {
-    res.status(500).json({ message: 'Server error', detail: e.message });
-  }
 };
 
-// POST /api/users
-exports.createUser = async (req, res) => {
-  try {
-    const { name, email } = req.body || {};
-    if (!name?.trim() || !email?.trim()) {
-      return res.status(400).json({ message: 'name & email are required' });
+exports.addUser = (req, res) => {
+    const { name, email } = req.body;
+    if (!name || !email) {
+        return res.status(400).json({ message: "Vui lòng nhập đủ tên và email" });
     }
-    const created = await User.create({ name: name.trim(), email: email.trim() });
-    res.status(201).json(created);
-  } catch (e) {
-    if (e.code === 11000) { // duplicate email
-      return res.status(409).json({ message: 'Email already exists' });
+    const newUser = { id: nextId++, name, email };
+    users.push(newUser);
+    res.status(201).json(newUser);
+};
+
+// HÀM QUAN TRỌNG ĐỂ SỬA LỖI
+exports.updateUser = (req, res) => {
+    const { id } = req.params;
+    const { name, email } = req.body;
+    const userIndex = users.findIndex(u => u.id == id);
+
+    if (userIndex === -1) {
+        return res.status(404).json({ message: "Không tìm thấy người dùng" });
     }
-    res.status(500).json({ message: 'Server error', detail: e.message });
-  }
+    if (!name || !email) {
+        return res.status(400).json({ message: "Vui lòng nhập đủ tên và email" });
+    }
+
+    users[userIndex] = { ...users[userIndex], name, email };
+    res.status(200).json(users[userIndex]);
 };
 
-// PUT /api/users/:id
-exports.updateUser = async (req, res) => {
-  try {
-    const updated = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-    if (!updated) return res.status(404).json({ message: 'User not found' });
-    res.status(200).json(updated);
-  } catch (e) {
-    res.status(500).json({ message: 'Server error', detail: e.message });
-  }
-};
+// HÀM QUAN TRỌNG ĐỂ SỬA LỖI
+exports.deleteUser = (req, res) => {
+    const { id } = req.params;
+    const initialLength = users.length;
+    users = users.filter(u => u.id != id);
 
-// DELETE /api/users/:id
-exports.deleteUser = async (req, res) => {
-  try {
-    const deleted = await User.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ message: 'User not found' });
-    res.status(200).json({ message: 'User deleted', user: deleted });
-  } catch (e) {
-    res.status(500).json({ message: 'Server error', detail: e.message });
-  }
+    if (users.length === initialLength) {
+        return res.status(404).json({ message: "Không tìm thấy người dùng để xóa" });
+    }
+    res.status(200).json({ message: "Xóa người dùng thành công" });
 };
