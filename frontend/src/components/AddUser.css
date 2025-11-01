@@ -22,7 +22,7 @@
 }
 
 .add-user-container h2 {
-  color: #667eea;
+  color: #1f6a48;
   font-size: 1.8rem;
   margin-bottom: 25px;
   text-align: center;
@@ -38,7 +38,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #10613e, #0f6832);
   border-radius: 2px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .form-group input:focus {
-  border-color: #667eea;
+  border-color: #115942;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   transform: translateY(-2px);
   background: white;

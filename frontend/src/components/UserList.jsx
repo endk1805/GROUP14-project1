@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import ConfirmModal from './ConfirmModal';
-import './UserList.css';
+import React from 'react';
 
 // Component nhận các props: users, onDeleteUser, onUpdateUser
 const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
@@ -127,14 +125,14 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
                                             className="btn-edit"
                                             title="Sửa"
                                         >
-                                            ✏️
+                                            Sửa
                                         </button>
                                         <button
                                             onClick={() => confirmDelete(user)}
                                             className="btn-delete"
                                             title="Xóa"
                                         >
-                                            🗑️
+                                            Xóa
                                         </button>
                                     </div>
                                 </>
