@@ -1,150 +1,128 @@
-:root {
-  --primary-color: #1D8348;
-  --primary-light: #28B463; 
-  --primary-dark: #152A18;   
-  --text-color: white;
-  --background-color: #2C5530; 
-}
+/* --- File: frontend/src/App.css (Đã sửa) --- */
 
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
+/* 🌟 Thêm CSS cho thanh Menu (Header) 🌟 */
+.app-header {
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  width: 100%;
   box-sizing: border-box;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Layout */
-.app {
-  min-height: 100vh;
-  position: relative;
-  z-index: 5;
-  padding-top: 60px;
-}
-
-.container {
+.app-nav {
+  display: flex;
+  /* === CHANGE: Center main links === */
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  gap: 25px; 
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 2rem;
-  position: relative;
-  z-index: 15;
+  padding: 0 20px; /* Keep padding */
+  box-sizing: border-box;
+  position: relative; /* Needed for absolute positioning of user info */
 }
 
-.content {
-  position: relative;
-  z-index: 15;
-}
-
-/* Form */
-.add-user-form {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 8px;
-  position: relative;
-  z-index: 20;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 25;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--primary-dark);
-  font-weight: 600;
-}
-
-.input-field {
-  width: 100%;
-  padding: 12px;
-  background: white;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+.app-nav a {
+  color: #ECEFF4; /* Chữ trắng */
+  font-weight: 500;
+  padding: 8px 12px;
   border-radius: 6px;
-  color: var(--primary-dark);
-  position: relative;
-  z-index: 25;
-  font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
-.input-field:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
-  outline: none;
+.app-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.input-field:focus {
-  outline: none;
-  border-color: var(--primary-light);
+/* === ADD: Style for the ACTIVE link === */
+.app-nav a.active {
+  color: #ffffff; /* Make active link brighter white */
+  font-weight: 600; /* Make it bolder */
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly darker background */
+  border-bottom: 2px solid #88C0D0; /* Add a light blue underline */
 }
 
-/* Buttons */
-.button {
-  background: var(--primary-color);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  z-index: 25;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  width: 100%;
+/* 🌟 CSS chung cho nội dung trang 🌟 */
+.App {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
-.button:hover {
-  background: var(--primary-light);
-  transform: translateY(-1px);
+.app-title {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.button:active {
-  transform: translateY(1px);
+.app-content {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Table */
-.table-container {
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  z-index: 20;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* 🌟 CSS Layout 2 cột cho trang Admin 🌟 */
+.app-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+  align-items: start;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.app-toolbar {
+  display: flex;
+  justify-content: center; /* Sửa: Căn giữa thanh tìm kiếm */
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 1s ease-in-out;
 }
 
-th, td {
-  padding: 1rem;
-  text-align: left;
-  color: var(--primary-dark);
+/* 🌸 Cột bên TRÁI (Thêm User) */
+.add-user-container {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInLeft 0.8s ease;
+  height: fit-content;
+  
+  /* === SỬA LỖI ĐÈ NHAU: Xóa 2 dòng này === */
+  /* position: sticky; */
+  /* top: 20px; */ 
 }
 
-th {
-  background: var(--primary-color);
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
+/* 🌸 Cột bên PHẢI (Danh sách User) */
+.user-list-container {
+  /* === SỬA LỖI KHÔNG NHẤT QUÁN === */
+  /* (Dùng style giống hệt cột trái) */
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInRight 0.8s ease;
 }
-
-tr:hover td {
-  background-color: rgba(44, 85, 48, 0.05);
+.user-info-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Position it absolutely to the right */
+  position: absolute; 
+  right: 20px; /* Distance from the right edge */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Fine-tune vertical centering */
+  /* margin-left: auto; */ /* REMOVE margin-left */
+}
+/* 🌈 Animation mượt */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Background */
@@ -170,3 +148,119 @@ tr:hover td {
   z-index: 2;
   pointer-events: none;
 }
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 🔍 Ô tìm kiếm */
+.search-wrap {
+  flex: 1; /* Cho nó giãn ra */
+  max-width: 600px; /* Giới hạn độ rộng */
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Thêm để padding không vỡ layout */
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(white, white),
+    linear-gradient(90deg, #4facfe, #00f2fe, #4facfe, #00f2fe);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: borderRotate 4s linear infinite;
+}
+
+.header-avatar {
+  width: 28px; /* Smaller size */
+  height: 28px; /* Smaller size */
+  border-radius: 50%; /* Ensure it's circular */
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Style for placeholder when no avatar */
+.header-avatar-placeholder {
+  width: 28px; /* Smaller size */
+  height: 28px; /* Smaller size */
+  border-radius: 50%; /* Ensure it's circular */
+  background-color: #5E81AC; /* Blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem; /* Smaller font for smaller circle */
+}
+
+/* Adjust spacing if needed */
+.user-info-display {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Slightly reduce gap */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@keyframes borderRotate {
+  0% {
+    background-image: linear-gradient(white, white),
+      linear-gradient(0deg, #4facfe, #00f2fe, #4facfe, #00f2fe);
+  }
+  100% {
+    background-image: linear-gradient(white, white),
+      linear-gradient(360deg, #4facfe, #00f2fe, #4facfe, #00f2fe);
+  }
+}
+
+/* ⏳ Loading spinner */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 15px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .app-container {
+    grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+  }
+  
+  .add-user-container {
+    position: static; /* Hủy sticky trên điện thoại */
+  }
+
+  .search-wrap {
+    max-width: 100%;
+  }
+}
+

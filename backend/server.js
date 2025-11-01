@@ -1,16 +1,20 @@
 require('dotenv').config();
 
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
+
+// 1. IMPORT TẤT CẢ CÁC FILES ROUTE
+// (Giả sử bạn tạo 2 file này theo hướng dẫn)
+const authRoutes = require('./routes/auth'); 
+// (File này bạn đã có)
+const profile = require('./routes/profile');
+const userRouter = require('./routes/userRoutes'); 
+
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors({
-    // THÊM PORT 3002 VÀO ĐÂY
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
+
+// --- Middleware ---
 app.use(express.json());
 app.use(cors());
 
@@ -29,5 +33,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
-const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+// --- Khởi động Server ---
+const PORT = process.env.PORT || 3002;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
