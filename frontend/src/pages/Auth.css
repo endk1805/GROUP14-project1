@@ -1,0 +1,137 @@
+/* --- File: frontend/src/pages/Auth.css (Glassmorphism Update) --- */
+
+/* Wrapper to center the form on the page */
+.auth-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px; /* Adjust padding as needed */
+  min-height: 80vh;
+}
+
+/* === APPLY GLASS EFFECT HERE === */
+.auth-container {
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.1); /* More transparent white */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 12px; /* Add back some rounding */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* Softer shadow */
+
+  /* Layout */
+  padding: 2.5rem 2.5rem; /* Adjust padding */
+  width: 100%;
+  max-width: 420px; /* Slightly wider */
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-out;
+}
+/* ============================= */
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title Styling */
+.auth-title {
+  text-align: center;
+  color: #ECEFF4; /* Light text for contrast */
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Add subtle shadow */
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group (Label + Input) */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem; /* Slightly more space */
+  font-weight: 500; /* Lighter weight */
+  color: #E5E9F0; /* Lighter text color */
+  font-size: 0.9rem;
+}
+
+/* Input Styling */
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  /* Input Glass Effect */
+  background-color: rgba(255, 255, 255, 0.15); /* More transparent input */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ECEFF4; /* Light text color */
+}
+
+.form-input::placeholder { /* Style placeholder */
+  color: rgba(236, 239, 244, 0.6);
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly less transparent on focus */
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1); /* Subtle focus shadow */
+}
+
+/* Button Styling (Keep Gradient Animation) */
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s, transform 0.2s; /* Add 'all' for shadow transition */
+
+  /* Gradient Animation Setup */
+  background-size: 200% auto;
+  animation: gradientShift 4s linear infinite;
+  background-image: linear-gradient(to right, #2193b0 0%, #6dd5ed 50%, #2193b0 100%);
+}
+
+@keyframes gradientShift { /* Keep the animation */
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.auth-button:hover {
+  background-position: right center; /* Move gradient */
+  animation-play-state: paused; /* Pause animation */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(41, 173, 206, 0.3); /* Use button shadow on hover */
+  opacity: 0.95;
+}
+
+/* Message Styling */
+.auth-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.auth-message.success {
+  color: #A3BE8C; /* Lighter green */
+}
+.auth-message.error {
+  color: #ff8a8a; /* Lighter red */
+}

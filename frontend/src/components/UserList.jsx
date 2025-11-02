@@ -2,25 +2,23 @@ import React, { useState } from 'react';
 import ConfirmModal from './ConfirmModal';
 import './UserList.css';
 
-// Component này nhận các props: users (danh sách), onDeleteUser, onUpdateUser
+// Component nhận các props: users, onDeleteUser, onUpdateUser
 const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
-    // State để quản lý user đang được chỉnh sửa
+    // Quản lý trạng thái chỉnh sửa
     const [editingId, setEditingId] = useState(null);
     const [editName, setEditName] = useState('');
     const [editEmail, setEditEmail] = useState('');
-    
-    // State cho modal xác nhận xóa
+
+    // Modal xác nhận xóa
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [userToDelete, setUserToDelete] = useState(null);
 
-    // Hàm để lấy chữ cái đầu tiên của tên làm avatar
-    const getInitials = (name) => {
-        return name.charAt(0).toUpperCase();
-    };
+    // Lấy chữ cái đầu làm avatar
+    const getInitials = (name = '') => name.charAt(0)?.toUpperCase() || '?';
 
-    // Bắt đầu chỉnh sửa user
+    // Bắt đầu chỉnh sửa
     const startEditing = (user) => {
-        setEditingId(user.id);
+        setEditingId(user._id); // ✅ dùng _id thay vì id
         setEditName(user.name);
         setEditEmail(user.email);
     };
@@ -40,22 +38,21 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
         }
     };
 
-    // Hiển thị modal xác nhận xóa
+    // Xác nhận xóa
     const confirmDelete = (user) => {
         setUserToDelete(user);
         setShowDeleteModal(true);
     };
 
-    // Xử lý xóa user
+    // Thực hiện xóa sau khi xác nhận
     const handleDeleteConfirmed = () => {
         if (userToDelete) {
-            onDeleteUser(userToDelete.id);
+            onDeleteUser(userToDelete._id); // ✅ dùng _id
             setShowDeleteModal(false);
             setUserToDelete(null);
         }
     };
 
-    // Đóng modal
     const closeModal = () => {
         setShowDeleteModal(false);
         setUserToDelete(null);
@@ -71,15 +68,14 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
             )}
             {users.length === 0 ? (
                 <div className="no-users">
-                    Chưa có người dùng nào. <br />
-                    Hãy thêm người dùng đầu tiên!
+                    Chưa có người dùng nào. <br /> Hãy thêm người dùng đầu tiên!
                 </div>
             ) : (
                 <ul className="users-list">
                     {users.map((user, index) => (
-                        <li key={user.id || index} className="user-item">
-                            {editingId === user.id ? (
-                                // Chế độ chỉnh sửa
+                        <li key={user._id || index} className="user-item">
+                            {editingId === user._id ? (
+                                // 🔧 Chế độ chỉnh sửa
                                 <div className="edit-mode">
                                     <div className="user-avatar">
                                         {getInitials(editName || user.name)}
@@ -101,14 +97,14 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
                                         />
                                     </div>
                                     <div className="edit-actions">
-                                        <button 
-                                            onClick={() => saveEdit(user.id)}
+                                        <button
+                                            onClick={() => saveEdit(user._id)}
                                             className="btn-save"
                                             title="Lưu"
                                         >
                                             ✓
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={cancelEditing}
                                             className="btn-cancel"
                                             title="Hủy"
@@ -118,24 +114,22 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
                                     </div>
                                 </div>
                             ) : (
-                                // Chế độ hiển thị thông thường
+                                // 👤 Chế độ xem thông thường
                                 <>
-                                    <div className="user-avatar">
-                                        {getInitials(user.name)}
-                                    </div>
+                                    <div className="user-avatar">{getInitials(user.name)}</div>
                                     <div className="user-info">
                                         <div className="user-name">{user.name}</div>
                                         <div className="user-email">{user.email}</div>
                                     </div>
                                     <div className="user-actions">
-                                        <button 
+                                        <button
                                             onClick={() => startEditing(user)}
                                             className="btn-edit"
                                             title="Sửa"
                                         >
                                             ✏️
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={() => confirmDelete(user)}
                                             className="btn-delete"
                                             title="Xóa"
@@ -149,8 +143,8 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
                     ))}
                 </ul>
             )}
-            
-            {/* Modal xác nhận xóa */}
+
+            {/* 🧩 Modal xác nhận xóa */}
             <ConfirmModal
                 isOpen={showDeleteModal}
                 onClose={closeModal}
@@ -162,3 +156,16 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
 };
 
 export default UserList;
+
+
+
+
+
+
+
+
+
+
+
+
+
