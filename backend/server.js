@@ -16,10 +16,22 @@ const app = express();
 
 // --- Middleware ---
 app.use(express.json());
-app.use(cors({
-    origin: ['https://group14-project4.vercel.app', 'http://localhost:3000'],
-    credentials: true,
-}));
+
+// CORS configuration
+app.use((req, res, next) => {
+    const allowedOrigins = ['https://group14-project4.vercel.app', 'http://localhost:3000'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
 
 // 2. KẾT NỐI ROUTER VÀO APP
 // /api/auth cho Đăng ký, Đăng nhập (Hoạt động 1)
