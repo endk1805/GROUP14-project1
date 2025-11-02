@@ -33,7 +33,7 @@ const Profile = () => {
             setAuthToken(token);
             const fetchUser = async () => {
                 try {
-                        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/profile`);
+                    const res = await axios.get('http://localhost:3002/api/profile');
                     setUser(res.data);
                     setName(res.data.name);
                     setEmailInput(res.data.email);
@@ -57,7 +57,7 @@ const Profile = () => {
         if (newPassword.length < 6) { setPasswordMessage('Mật khẩu mới phải có ít nhất 6 ký tự.'); setIsError(true); return; }
         if (newPassword !== confirmPassword) { setPasswordMessage('Mật khẩu mới và xác nhận không khớp.'); setIsError(true); return; }
         try {
-                await axios.put(`${process.env.REACT_APP_API_URL}/api/profile/password`, { currentPassword, newPassword });
+            await axios.put('http://localhost:3002/api/profile/password', { currentPassword, newPassword });
             setPasswordMessage('Đổi mật khẩu thành công!');
             setCurrentPassword(''); setNewPassword(''); setConfirmPassword('');
             setShowPasswordForm(false);
@@ -82,7 +82,7 @@ const Profile = () => {
         formData.append('avatar', avatarFile);
         setMessage('Đang tải ảnh lên...'); setPasswordMessage(''); setIsError(false);
         try {
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/profile/avatar`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+            const res = await axios.post('http://localhost:3002/api/profile/avatar', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             setUser(prevUser => ({ ...prevUser, avatar: res.data.avatarUrl }));
             setMessage('Cập nhật ảnh đại diện thành công!');
             setAvatarFile(null);
@@ -105,7 +105,7 @@ const Profile = () => {
 
         if (Object.keys(updateData).length > 0) {
             try {
-                 const res = await axios.put(`${process.env.REACT_APP_API_URL}/api/profile`, updateData);
+                const res = await axios.put('http://localhost:3002/api/profile', updateData);
                 setUser(res.data);
                 setName(res.data.name);
                 setEmailInput(res.data.email);

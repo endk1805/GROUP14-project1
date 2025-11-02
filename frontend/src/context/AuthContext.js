@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
         if (localStorage.token) {
             setAuthToken(localStorage.token);
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/profile`);
+                const res = await axios.get('http://localhost:3002/api/profile');
                 setUser(res.data);
                 setToken(localStorage.token); // Ensure token state is set
             } catch (err) {
