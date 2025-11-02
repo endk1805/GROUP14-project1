@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddUser.css';
+import axios from 'axios';
 
 // Component này nhận một prop là hàm 'onUserAdded'
 const AddUser = ({ onUserAdded }) => {
