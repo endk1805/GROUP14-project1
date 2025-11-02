@@ -17,8 +17,8 @@ const app = express();
 // --- Middleware ---
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'https://group14-project1.vercel.app',
-  credentials: true, // Thay đổi theo URL frontend của bạn
+    origin: ['https://group14-project4.vercel.app', 'http://localhost:3000'],
+    credentials: true,
 }));
 
 // 2. KẾT NỐI ROUTER VÀO APP
