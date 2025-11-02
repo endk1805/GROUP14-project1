@@ -39,3 +39,13 @@ mongoose.connect(process.env.MONGO_URI)
 // --- Khởi động Server ---
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+
+// === HEALTH CHECK ROUTE ===
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Backend GROUP14 đang chạy!', 
+    time: new Date().toISOString(),
+    url: req.protocol + '://' + req.get('host')
+  });
+});
