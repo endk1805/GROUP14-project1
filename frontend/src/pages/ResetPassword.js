@@ -29,7 +29,7 @@ const ResetPassword = () => {
         setIsError(false);
         try {
             // Gọi API reset với token từ URL và password mới từ body
-            const res = await axios.post(`http://localhost:3002/api/auth/reset-password/${token}`, { password });
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/${token}`, { password });
             setMessage(res.data.msg + " Bạn sẽ được chuyển về trang đăng nhập sau 3 giây.");
             // Chuyển về trang đăng nhập sau 3 giây
             setTimeout(() => {

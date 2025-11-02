@@ -16,7 +16,10 @@ const app = express();
 
 // --- Middleware ---
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'https://group14-project1.vercel.app',
+  credentials: true, // Thay đổi theo URL frontend của bạn
+}));
 
 // 2. KẾT NỐI ROUTER VÀO APP
 // /api/auth cho Đăng ký, Đăng nhập (Hoạt động 1)
