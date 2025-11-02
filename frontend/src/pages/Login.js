@@ -20,7 +20,7 @@ const Login = () => {
     setMessage(''); // Clear previous message
     setIsError(false);
     try {
-      const res = await axios.post('http://localhost:3002/api/auth/login', formData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, formData);
 
       // === CHANGE HERE: Use the login function from context ===
       // This will handle saving the token AND updating the global user state

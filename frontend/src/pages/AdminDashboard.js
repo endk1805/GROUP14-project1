@@ -23,7 +23,7 @@ const AdminDashboard = () => {
     setError('');
     try {
       // Axios requests use global headers set by AuthContext
-      const res = await axios.get('http://localhost:3002/api/users'); // Ensure this line is correct (around line 26)
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
       setUsers(res.data);
     } catch (err) { // Check syntax within this block
       console.error("Lỗi fetch users:", err);
@@ -45,8 +45,8 @@ const AdminDashboard = () => {
       if (!token) {
           alert('Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại.'); return;
       }
-      try {
-        await axios.delete(`http://localhost:3002/api/users/${idToDelete}`);
+  try {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${idToDelete}`);
         setUsers(currentUsers => currentUsers.filter(user => user._id !== idToDelete));
         alert('Xóa thành công!');
       } catch (err) {
